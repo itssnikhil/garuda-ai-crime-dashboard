@@ -190,37 +190,102 @@ router.get('/network/search', auth, (req, res) => {
 });
 
 router.get('/predictions', auth, (req, res) => {
+  const district = (req.query.district as string) || 'Indore';
   res.json([
-    { area: "Vijay Nagar (AB Road)", crimeType: "Commercial Extortion & Vehicle Theft", probability: 89, trend: "Rising (+18%)", recommendation: "Intensify Cheetah Mobile patrols from 22:00 to 04:00 hrs" },
-    { area: "Sarafa Bazaar", crimeType: "Bullion Robbery & Organized Smuggling", probability: 84, trend: "Stable", recommendation: "Enforce biometric checkpoints at market entry gates" },
-    { area: "Rau Bypass Corridor", crimeType: "Highway Vehicle Hijacking", probability: 79, trend: "Rising (+12%)", recommendation: "Deploy automated ANPR barriers at Manglia and Silicon City circle" }
+    {
+      id: 'PRED-1',
+      title: `Organized Vehicle Hijacking & Robbery Cluster (${district})`,
+      prediction: `Increased luxury SUV and commercial logistics hijacking forecast along AB Road & Indore Bypass corridor`,
+      confidenceScore: 92,
+      evidence: [
+        '3 commercial transport thefts reported in 7 days near Dewas-Indore bypass',
+        'Known syndicate vehicle MP-09-CB-4592 spotted on Manglia toll ANPR'
+      ],
+      historicalComparison: '+42% surge compared to previous festive quarter',
+      topContributingFactors: [
+        'High-density freight movement towards Pithampur SEZ',
+        'Repeat offenders on conditional bail operating along Malwa highway'
+      ],
+      recommendedAction: 'Deploy armed QRT checkpoints at Manglia, Rau Circle, and Lasudia bypass corridors from 23:00 to 04:30.'
+    },
+    {
+      id: 'PRED-2',
+      title: 'Commercial Night Burglary Threat (Sarafa & Rajwada)',
+      prediction: `High probability of coordinated shop-breaking targeting jewelry and bullion depots in ${district} heritage core`,
+      confidenceScore: 86,
+      evidence: [
+        'Unregistered drones spotted reconnoitering Sarafa Bazaar after 02:00 AM',
+        'Recurrence pattern matching unsolved FIR #882'
+      ],
+      historicalComparison: 'Consistent with festive surge cycles',
+      topContributingFactors: [
+        'High cash volumes in night street markets',
+        'Narrow alleyways with blind spots behind heritage structures'
+      ],
+      recommendedAction: 'Mandate foot patrols with thermal night-vision gear and link Sarafa CCTV feeds directly to Indore Commissionerate Command Center.'
+    }
   ]);
 });
 
 router.get('/forecast', auth, (req, res) => {
-  res.json([
-    { day: "Mon", predicted: 14, actual: 12 },
-    { day: "Tue", predicted: 19, actual: 17 },
-    { day: "Wed", predicted: 16, actual: 15 },
-    { day: "Thu", predicted: 22, actual: 20 },
-    { day: "Fri", predicted: 28, actual: 26 },
-    { day: "Sat", predicted: 34, actual: 31 },
-    { day: "Sun", predicted: 25, actual: 23 }
-  ]);
+  const district = (req.query.district as string) || 'Indore';
+  const base = district.length * 10;
+  res.json({
+    next7Days: { incidents: base + 38, trend: '+7.4%', risk: 'High' },
+    next30Days: { incidents: base * 4 + 75, trend: '-3.2%', risk: 'Medium' },
+    next90Days: { incidents: base * 11 + 40, trend: '-8.5%', risk: 'Low' }
+  });
 });
 
 router.get('/hotspots', auth, (req, res) => {
+  const district = (req.query.district as string) || 'Indore';
+  const centers: Record<string, [number, number]> = {
+    'Indore': [22.7196, 75.8577],
+    'Bhopal': [23.2599, 77.4126],
+    'Ujjain': [23.1765, 75.7885],
+    'Dewas': [22.9676, 76.0534],
+    'Gwalior': [26.2183, 78.1828],
+    'Jabalpur': [23.1815, 79.9864]
+  };
+  const [lat, lng] = centers[district] || [22.7196, 75.8577];
+
   res.json([
-    { id: "H1", name: "Vijay Nagar Junction", lat: 22.7533, lng: 75.8937, radius: 450, risk: "CRITICAL", incidents: 38 },
-    { id: "H2", name: "Sarafa Night Food Market", lat: 22.7196, lng: 75.8577, radius: 300, risk: "HIGH", incidents: 24 },
-    { id: "H3", name: "Rau Bypass Staging Circle", lat: 22.6288, lng: 75.8118, radius: 600, risk: "HIGH", incidents: 29 }
+    { id: 1, lat: lat + 0.033, lng: lng + 0.036, intensity: 0.9, type: 'Commercial Burglary & Extortion', severity: 'Red', recentIncidents: 18, aiScore: 94, station: 'Vijay Nagar Police Station' },
+    { id: 2, lat: lat, lng: lng, intensity: 0.8, type: 'Night Market Bullion Theft', severity: 'Orange', recentIncidents: 12, aiScore: 86, station: 'Sarafa Bazaar Police Post' },
+    { id: 3, lat: lat - 0.09, lng: lng - 0.046, intensity: 0.85, type: 'Highway Auto Theft (SUVs)', severity: 'Red', recentIncidents: 15, aiScore: 89, station: 'Rau Police Station (Bypass)' },
+    { id: 4, lat: lat + 0.005, lng: lng + 0.026, intensity: 0.65, type: 'Cyber Loan Extortion Ring', severity: 'Yellow', recentIncidents: 9, aiScore: 78, station: 'Palasia Cyber Thana' },
+    { id: 5, lat: lat - 0.027, lng: lng + 0.010, intensity: 0.7, type: 'Student PG Residential Theft', severity: 'Orange', recentIncidents: 11, aiScore: 82, station: 'Bhanwarkuan Thana' },
+    { id: 6, lat: lat + 0.040, lng: lng + 0.042, intensity: 0.82, type: 'Highway Transport Hijacking', severity: 'Red', recentIncidents: 14, aiScore: 91, station: 'Lasudia Police Station (AB Road)' }
   ]);
 });
 
 router.get('/alerts', auth, (req, res) => {
+  const district = (req.query.district as string) || 'Indore';
   res.json([
-    { id: "ALT-01", type: "ANPR Hit", message: "Cloned MP-09-CB-4592 plate spotted at Manglia Toll Plaza.", severity: "CRITICAL", timestamp: "5m ago" },
-    { id: "ALT-02", type: "Cluster Spike", message: "Unusual density of nighttime vehicle thefts around Vijay Nagar Sector 1.", severity: "HIGH", timestamp: "18m ago" }
+    {
+      id: 'A-101',
+      type: 'Abnormal Crime Pattern',
+      title: 'Spike in Cyber Extortion & Loan App Fraud',
+      description: `320% surge in instant loan blackmail and phishing intercepts across ${district} (Vijay Nagar & Palasia zones) over the last 48 hours.`,
+      time: '08m ago',
+      level: 'Critical'
+    },
+    {
+      id: 'A-102',
+      type: 'Repeat Offender Detected',
+      title: 'Safe City ANPR & Facial Match',
+      description: `Suspect S1 (Ravi Kumar) flagged by Indore Smart City Safe City AI camera near Rajwada-Sarafa junction.`,
+      time: '34m ago',
+      level: 'High'
+    },
+    {
+      id: 'A-103',
+      type: 'Inter-District Syndicate Movement',
+      title: 'Dewas Bypass / AB Road Intercept',
+      description: `Black Scorpio (MP-09-CB-4592) linked to armed robbery crossed Manglia Toll Plaza towards ${district} city center.`,
+      time: '1h 15m ago',
+      level: 'High'
+    }
   ]);
 });
 
