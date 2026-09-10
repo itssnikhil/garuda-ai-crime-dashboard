@@ -1,0 +1,118 @@
+{
+  "type": "FeatureCollection",
+  "features": [
+    {
+      "type": "Feature",
+      "properties": { "name": "Indore", "state": "Madhya Pradesh", "zone": "Indore Commissionerate" },
+      "geometry": {
+        "type": "Polygon",
+        "coordinates": [
+          [
+            [75.65, 22.50],
+            [76.05, 22.50],
+            [76.15, 22.75],
+            [76.00, 23.00],
+            [75.60, 22.95],
+            [75.65, 22.50]
+          ]
+        ]
+      }
+    },
+    {
+      "type": "Feature",
+      "properties": { "name": "Bhopal", "state": "Madhya Pradesh", "zone": "Bhopal Commissionerate" },
+      "geometry": {
+        "type": "Polygon",
+        "coordinates": [
+          [
+            [77.20, 23.10],
+            [77.60, 23.10],
+            [77.65, 23.40],
+            [77.15, 23.45],
+            [77.20, 23.10]
+          ]
+        ]
+      }
+    },
+    {
+      "type": "Feature",
+      "properties": { "name": "Ujjain", "state": "Madhya Pradesh", "zone": "Ujjain Range" },
+      "geometry": {
+        "type": "Polygon",
+        "coordinates": [
+          [
+            [75.60, 23.05],
+            [76.10, 23.05],
+            [76.15, 23.45],
+            [75.55, 23.40],
+            [75.60, 23.05]
+          ]
+        ]
+      }
+    },
+    {
+      "type": "Feature",
+      "properties": { "name": "Dewas", "state": "Madhya Pradesh", "zone": "Ujjain Range" },
+      "geometry": {
+        "type": "Polygon",
+        "coordinates": [
+          [
+            [75.95, 22.80],
+            [76.40, 22.80],
+            [76.45, 23.15],
+            [75.90, 23.10],
+            [75.95, 22.80]
+          ]
+        ]
+      }
+    },
+    {
+      "type": "Feature",
+      "properties": { "name": "Gwalior", "state": "Madhya Pradesh", "zone": "Chambal / Gwalior Range" },
+      "geometry": {
+        "type": "Polygon",
+        "coordinates": [
+          [
+            [78.00, 26.05],
+            [78.40, 26.05],
+            [78.45, 26.35],
+            [77.95, 26.30],
+            [78.00, 26.05]
+          ]
+        ]
+      }
+    },
+    {
+      "type": "Feature",
+      "properties": { "name": "Jabalpur", "state": "Madhya Pradesh", "zone": "Mahakoshal Range" },
+      "geometry": {
+        "type": "Polygon",
+        "coordinates": [
+          [
+            [79.75, 23.05],
+            [80.20, 23.05],
+            [80.25, 23.35],
+            [79.70, 23.30],
+            [79.75, 23.05]
+          ]
+        ]
+      }
+    },
+    {
+      "type": "Feature",
+      "properties": { "name": "Dhar", "state": "Madhya Pradesh", "zone": "Indore Rural Range" },
+      "geometry": {
+        "type": "Polygon",
+        "coordinates": [
+          [
+            [75.10, 22.40],
+            [75.55, 22.40],
+            [75.60, 22.80],
+            [75.05, 22.75],
+            [75.10, 22.40]
+          ]
+        ]
+      }
+    }
+  ]
+}

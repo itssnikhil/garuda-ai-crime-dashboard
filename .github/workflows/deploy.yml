@@ -1,0 +1,38 @@
+name: Build & Verify GARUDA-AI
+
+on:
+  push:
+    branches: [ main, master ]
+  pull_request:
+    branches: [ main, master ]
+  workflow_dispatch:
+
+jobs:
+  build:
+    name: Build & Validate Dashboard
+    runs-on: ubuntu-latest
+
+    steps:
+      - name: Checkout Repository
+        uses: actions/checkout@v4
+
+      - name: Setup Node.js Environment
+        uses: actions/setup-node@v4
+        with:
+          node-version: 20
+          cache: 'npm'
+
+      - name: Install Dependencies
+        run: npm install
+
+      - name: Run TypeScript Validation
+        run: npx tsc --noEmit
+
+      - name: Build Production Client & Server
+        run: npm run build
+
+      - name: Verify Build Artifacts
+        run: |
+          ls -la dist/
+          test -f dist/index.html
+          test -f dist/server.cjs
