@@ -3,8 +3,8 @@
 @layer base {
   body {
     font-family: 'Inter', system-ui, -apple-system, BlinkMacSystemFont, 'Segoe UI', Roboto, sans-serif;
-    background-color: #0b1120;
-    color: #e2e8f0;
+    background-color: #000000;
+    color: #f5f5f5;
   }
   
   code, pre, .font-mono {
@@ -19,16 +19,16 @@
 }
 
 ::-webkit-scrollbar-track {
-  background: #0b1120;
+  background: #000000;
 }
 
 ::-webkit-scrollbar-thumb {
-  background: #334155;
+  background: #262626;
   border-radius: 4px;
 }
 
 ::-webkit-scrollbar-thumb:hover {
-  background: #475569;
+  background: #383838;
 }
 
 /* Subtle fade-in animation for tab switches */
@@ -47,7 +47,7 @@
   animation: subtle-fade 0.15s ease-out forwards;
 }
 
-/* Stitch Instagram-Themed Gradients */
+/* Stitch Instagram-Themed Gradients & Surfaces */
 .ig-gradient {
   background: linear-gradient(45deg, #f09433 0%, #e6683c 25%, #dc2743 50%, #cc2366 75%, #bc1888 100%);
 }
@@ -59,5 +59,14 @@
 .ig-border-ring {
   background: linear-gradient(45deg, #f09433, #e6683c, #dc2743, #cc2366, #bc1888);
   padding: 2.5px;
+}
+.bg-surface-card {
+  background-color: #121212;
+}
+.bg-surface-elevated {
+  background-color: #181818;
+}
+.border-ig {
+  border-color: #262626;
 }
 

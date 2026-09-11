@@ -155,64 +155,64 @@ export default function GisDashboard({ user }: { user: any }) {
   const centerCoord = DISTRICT_COORDINATES[district] || [22.7196, 75.8577];
 
   return (
-    <div className="flex-1 flex flex-col h-full bg-[#07090e] text-slate-200 overflow-hidden relative">
+    <div className="flex-1 flex flex-col h-full bg-black text-neutral-100 overflow-hidden relative select-none">
       {/* Filters Header */}
-      <div className="p-4 border-b border-slate-800 bg-[#0c1017] flex flex-wrap items-center justify-between z-10 gap-4">
+      <div className="p-3.5 border-b border-[#262626] bg-[#121212] flex flex-wrap items-center justify-between z-10 gap-4">
         <div>
           <div className="flex items-center gap-2">
-            <span className="material-symbols-outlined text-blue-400 text-lg">public</span>
-            <h2 className="text-sm font-bold uppercase tracking-widest text-white">Madhya Pradesh GIS Intelligence • Indore Center</h2>
+            <span className="material-symbols-outlined text-[#E1306C] text-lg">public</span>
+            <h2 className="text-xs font-semibold tracking-wide uppercase text-white">Madhya Pradesh GIS Intelligence • Command Grid</h2>
           </div>
-          <p className="text-[10px] text-slate-400 mt-0.5">Real-time crime hotspot clustering, AI density scoring & Indore Safe City dispatch</p>
+          <p className="text-[10px] text-neutral-400 mt-0.5">Real-time crime hotspot clustering, AI density scoring & Safe City dispatch</p>
         </div>
 
         {dispatchNotice && (
-          <div className="px-3 py-1.5 bg-emerald-500/20 border border-emerald-500/40 text-emerald-300 text-xs rounded-lg font-mono animate-bounce">
+          <div className="px-3 py-1 bg-[#251016] border border-[#dc2743]/30 text-[#E1306C] text-xs rounded-full font-mono animate-bounce">
             ⚡ {dispatchNotice}
           </div>
         )}
 
-        <div className="flex flex-wrap items-center gap-3">
+        <div className="flex flex-wrap items-center gap-2.5">
           {/* MP Districts Selector */}
-          <div className="flex items-center gap-1.5 bg-slate-900 border border-slate-700 rounded-lg px-2.5 py-1 text-xs">
-            <span className="text-[10px] uppercase font-bold text-slate-400">MP District:</span>
+          <div className="flex items-center gap-1.5 bg-[#181818] border border-[#262626] rounded-xl px-2.5 py-1 text-xs">
+            <span className="text-[10px] uppercase font-semibold text-neutral-500">MP District:</span>
             <select 
               value={district} 
               onChange={(e) => setDistrict(e.target.value)}
-              className="bg-transparent text-white font-medium focus:outline-none cursor-pointer"
+              className="bg-transparent text-white font-medium focus:outline-none cursor-pointer text-xs"
             >
-              <option value="Indore" className="bg-slate-900">Indore (Commissionerate)</option>
-              <option value="Bhopal" className="bg-slate-900">Bhopal (Capital)</option>
-              <option value="Ujjain" className="bg-slate-900">Ujjain (Mahakal Zone)</option>
-              <option value="Dewas" className="bg-slate-900">Dewas (Industrial)</option>
-              <option value="Gwalior" className="bg-slate-900">Gwalior</option>
-              <option value="Jabalpur" className="bg-slate-900">Jabalpur</option>
-              <option value="Dhar" className="bg-slate-900">Dhar (Pithampur Hub)</option>
-              <option value="Ratlam" className="bg-slate-900">Ratlam</option>
-              <option value="Khargone" className="bg-slate-900">Khargone</option>
-              <option value="Sagar" className="bg-slate-900">Sagar</option>
+              <option value="Indore" className="bg-[#181818]">Indore (Commissionerate)</option>
+              <option value="Bhopal" className="bg-[#181818]">Bhopal (Capital)</option>
+              <option value="Ujjain" className="bg-[#181818]">Ujjain (Mahakal Zone)</option>
+              <option value="Dewas" className="bg-[#181818]">Dewas (Industrial)</option>
+              <option value="Gwalior" className="bg-[#181818]">Gwalior</option>
+              <option value="Jabalpur" className="bg-[#181818]">Jabalpur</option>
+              <option value="Dhar" className="bg-[#181818]">Dhar (Pithampur Hub)</option>
+              <option value="Ratlam" className="bg-[#181818]">Ratlam</option>
+              <option value="Khargone" className="bg-[#181818]">Khargone</option>
+              <option value="Sagar" className="bg-[#181818]">Sagar</option>
             </select>
           </div>
 
           {/* Time Filter */}
-          <div className="flex items-center gap-1.5 bg-slate-900 border border-slate-700 rounded-lg px-2.5 py-1 text-xs">
-            <span className="text-[10px] uppercase font-bold text-slate-400">Time:</span>
+          <div className="flex items-center gap-1.5 bg-[#181818] border border-[#262626] rounded-xl px-2.5 py-1 text-xs">
+            <span className="text-[10px] uppercase font-semibold text-neutral-500">Time:</span>
             <select 
               value={timeFilter} 
               onChange={(e) => setTimeFilter(e.target.value)}
-              className="bg-transparent text-white font-medium focus:outline-none cursor-pointer"
+              className="bg-transparent text-white font-medium focus:outline-none cursor-pointer text-xs"
             >
-              <option value="24" className="bg-slate-900">Last 24 Hours</option>
-              <option value="7" className="bg-slate-900">Last 7 Days</option>
-              <option value="30" className="bg-slate-900">Last 30 Days</option>
+              <option value="24" className="bg-[#181818]">Last 24 Hours</option>
+              <option value="7" className="bg-[#181818]">Last 7 Days</option>
+              <option value="30" className="bg-[#181818]">Last 30 Days</option>
             </select>
           </div>
 
           {/* Layer Toggles */}
           <button
             onClick={() => setShowCctv(!showCctv)}
-            className={`px-2.5 py-1 rounded text-xs font-semibold border transition-colors ${
-              showCctv ? 'bg-blue-600/30 border-blue-500 text-blue-300' : 'bg-slate-900 border-slate-700 text-slate-400'
+            className={`px-3 py-1 rounded-xl text-xs font-semibold transition-all ${
+              showCctv ? 'ig-gradient text-white shadow-sm' : 'bg-[#181818] border border-[#262626] text-neutral-400 hover:text-white'
             }`}
           >
             Safe City CCTV
@@ -220,21 +220,21 @@ export default function GisDashboard({ user }: { user: any }) {
 
           <button
             onClick={() => setShowPatrols(!showPatrols)}
-            className={`px-2.5 py-1 rounded text-xs font-semibold border transition-colors ${
-              showPatrols ? 'bg-emerald-600/30 border-emerald-500 text-emerald-300' : 'bg-slate-900 border-slate-700 text-slate-400'
+            className={`px-3 py-1 rounded-xl text-xs font-semibold transition-all ${
+              showPatrols ? 'bg-[#251016] text-[#E1306C] border border-[#dc2743]/40' : 'bg-[#181818] border border-[#262626] text-neutral-400 hover:text-white'
             }`}
           >
             Cheetah Patrols
           </button>
 
           {/* Map Style Selector */}
-          <div className="flex bg-slate-900 border border-slate-700 rounded-lg p-0.5">
+          <div className="flex bg-[#181818] border border-[#262626] rounded-xl p-0.5">
             {(['dark', 'street', 'satellite'] as const).map((mode) => (
               <button
                 key={mode}
                 onClick={() => setMapMode(mode)}
-                className={`px-2.5 py-1 rounded text-[10px] font-bold uppercase transition-colors ${
-                  mapMode === mode ? 'bg-blue-600 text-white' : 'text-slate-400 hover:text-white'
+                className={`px-2.5 py-1 rounded-lg text-[10px] font-bold uppercase transition-all ${
+                  mapMode === mode ? 'ig-gradient text-white shadow-sm' : 'text-neutral-400 hover:text-white'
                 }`}
               >
                 {mode}
@@ -309,7 +309,7 @@ export default function GisDashboard({ user }: { user: any }) {
                     <p className="text-xs"><strong>Recent Complaints:</strong> {hotspot.recentIncidents}</p>
                     <button
                       onClick={() => handleDispatch(hotspot.station)}
-                      className="mt-2 w-full py-1 bg-blue-600 hover:bg-blue-700 text-white rounded text-[11px] font-bold tracking-wider uppercase transition-colors"
+                      className="mt-2 w-full py-1.5 ig-gradient hover:opacity-95 text-white rounded-lg text-[11px] font-semibold tracking-wider uppercase transition-all shadow-sm"
                     >
                       ⚡ Dispatch Cheetah Unit
                     </button>
@@ -321,23 +321,23 @@ export default function GisDashboard({ user }: { user: any }) {
         </MapContainer>
 
         {/* Tactical Legend Overlay */}
-        <div className="absolute bottom-6 left-6 z-[1000] bg-[#0c1017]/90 backdrop-blur-md border border-slate-800 p-3.5 rounded-xl shadow-2xl text-xs space-y-2">
-          <p className="font-bold uppercase tracking-widest text-[10px] text-slate-400">Indore Safe City Grid</p>
+        <div className="absolute bottom-6 left-6 z-[1000] bg-[#121212]/95 backdrop-blur-md border border-[#262626] p-3.5 rounded-2xl shadow-2xl text-xs space-y-2 select-none">
+          <p className="font-semibold uppercase tracking-wider text-[10px] text-neutral-500">Indore Safe City Grid</p>
           <div className="flex items-center gap-2">
-            <div className="w-3 h-3 rounded-full bg-red-500 shadow-[0_0_8px_#ef4444]"></div>
-            <span className="text-slate-300">Critical Threat Sector</span>
+            <div className="w-2.5 h-2.5 rounded-full bg-[#E1306C] shadow-[0_0_8px_#E1306C]"></div>
+            <span className="text-neutral-200">Critical Threat Sector</span>
           </div>
           <div className="flex items-center gap-2">
-            <div className="w-3 h-3 rounded-full bg-orange-500"></div>
-            <span className="text-slate-300">High Incident Frequency</span>
+            <div className="w-2.5 h-2.5 rounded-full bg-[#F59E0B]"></div>
+            <span className="text-neutral-200">High Incident Frequency</span>
           </div>
           <div className="flex items-center gap-2">
-            <div className="w-3 h-3 rounded-full bg-yellow-500"></div>
-            <span className="text-slate-300">Moderate Surge Corridor</span>
+            <div className="w-2.5 h-2.5 rounded-full bg-[#0095F6]"></div>
+            <span className="text-neutral-200">Moderate Surge Corridor</span>
           </div>
           <div className="flex items-center gap-2">
-            <div className="w-3 h-3 rounded-full bg-green-500"></div>
-            <span className="text-slate-300">Secured Police Beat</span>
+            <div className="w-2.5 h-2.5 rounded-full bg-emerald-500"></div>
+            <span className="text-neutral-200">Secured Police Beat</span>
           </div>
         </div>
       </div>
